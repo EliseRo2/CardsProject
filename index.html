@@ -22,12 +22,43 @@
 
     </div>
 
+    <!-- <div id="buttonContainer">
+
+        <button id="all" value="all">All States</button>
+
+        <button id="tier1" value="tier1">States with More than 500,000 Applications</button>
+
+        <button id="tier2" value="tier2">States with 100,001 to 500,000 Applications</button>
+
+        <button id="tier3" value="tier3">States with 10,000 to 100,000 Applications</button>
+
+        <button id="tier4" value="tier4">States with Less than 10,000 Applications</button>
+
+    </div> -->
+
+        <select id="applicationDropdown">
+            <h3>Number of Applications</h3>
+            <option value="all">All States</option>
+            <option value="tier1">States with More than 500,000 Applications</option>
+            <option value="tier2">States with 100,001 to 500,000 Applications</option>
+            <option value="tier3">States with 10,000 to 100,000 Applications</option>
+            <option value="tier4">States with Less than 10,000 Applications</option>
+        </select>
+
+        <!-- THIS IS THE SECOND DROPDOWN FOR FILTERING <select id="first-gen-dropdown">
+            <h3>Percentage of First-Generation Applicants</h3>
+            <option value="all">All States</option>
+            <option value="more-first-gen">States with More than 35% of First-Generation Applicants</option>
+            <option value="less-first-gen">States with Less than 35% of First-Generation Applicants</option>
+        </select> -->
+
     <script>
 
         const states = [
             {
                 state: "Alabama",
                 applications: 27263,
+                value: "tier3",
                 firstGeneration: 33,
                 femaleGender: 56,
                 maleGender: 41,
@@ -44,6 +75,7 @@
             {
                 state: "Alaska",
                 applications: 5926,
+                value: "tier4",
                 firstGeneration: 27,
                 femaleGender: 55,
                 maleGender: 41,
@@ -60,6 +92,7 @@
             {
                 state: "Arizona",
                 applications: 43618,
+                value: "tier3",
                 firstGeneration: 29,
                 femaleGender: 55,
                 maleGender: 41,
@@ -76,6 +109,7 @@
             {
                 state: "Arkansas",
                 applications: 12110,
+                value: "tier3",
                 firstGeneration: 31,
                 femaleGender: 56,
                 maleGender: 39,
@@ -92,6 +126,7 @@
             {
                 state: "Armed Forces Territories",
                 applications: 4968,
+                value: "tier4",
                 firstGeneration: 18,
                 femaleGender: 49,
                 maleGender: 47,
@@ -108,6 +143,7 @@
             {
                 state: "California",
                 applications: 634424,
+                tier1: "tier1",
                 firstGeneration: 29,
                 femaleGender: 55,
                 maleGender: 41,
@@ -124,6 +160,7 @@
             {
                 state: "Colorado",
                 applications: 170789,
+                value: "tier2",
                 firstGeneration: 32,
                 femaleGender: 52,
                 maleGender: 44,
@@ -140,6 +177,7 @@
             {
                 state: "Connecticut",
                 applications: 225005,
+                value: "tier2",
                 firstGeneration: 35,
                 femaleGender: 52,
                 maleGender: 45,
@@ -156,6 +194,7 @@
             {
                 state: "Delaware",
                 applications: 35716,
+                value: "tier3",
                 firstGeneration: 40,
                 femaleGender: 56,
                 maleGender: 41,
@@ -172,6 +211,7 @@
             {
                 state: "District of Columbia",
                 applications: 35083,
+                value: "tier3",
                 firstGeneration: 54,
                 femaleGender: 53,
                 maleGender: 44,
@@ -188,6 +228,7 @@
             {
                 state: "Florida",
                 applications: 506712,
+                value: "tier1",
                 firstGeneration: 37,
                 femaleGender: 55,
                 maleGender: 42,
@@ -204,6 +245,7 @@
             {
                 state: "Georgia",
                 applications: 290713,
+                value: "tier2",
                 firstGeneration: 40,
                 femaleGender: 54,
                 maleGender: 43,
@@ -220,6 +262,7 @@
             {
                 state: "Hawaii",
                 applications: 21833,
+                value: "tier3",
                 firstGeneration: 32,
                 femaleGender: 54,
                 maleGender: 43,
@@ -236,6 +279,7 @@
             {
                 state: "Idaho",
                 applications: 10031,
+                value: "tier3",
                 firstGeneration: 23,
                 femaleGender: 52,
                 maleGender: 44,
@@ -252,6 +296,7 @@
             {
                 state: "Illinois",
                 applications: 552858,
+                value: "tier1",
                 firstGeneration: 42,
                 femaleGender: 53,
                 maleGender: 44,
@@ -268,6 +313,7 @@
             {
                 state: "Indiana",
                 applications: 146982,
+                value: "tier2",
                 firstGeneration: 38,
                 femaleGender: 54,
                 maleGender: 43,
@@ -284,6 +330,7 @@
             {
                 state: "Iowa",
                 applications: 15500,
+                value: "tier3",
                 firstGeneration: 24,
                 femaleGender: 53,
                 maleGender: 42,
@@ -300,6 +347,7 @@
             {
                 state: "Kansas",
                 applications: 18109,
+                value: "tier3",
                 firstGeneration: 23,
                 femaleGender: 54,
                 maleGender: 42,
@@ -316,6 +364,7 @@
             {
                 state: "Kentucky",
                 applications: 40585,
+                value: "tier3",
                 firstGeneration: 31,
                 femaleGender: 54,
                 maleGender: 43,
@@ -332,6 +381,7 @@
             {
                 state: "Louisiana",
                 applications: 55859,
+                value: "tier3",
                 firstGeneration: 41,
                 femaleGender: 56,
                 maleGender: 41,
@@ -348,6 +398,7 @@
             {
                 state: "Maine",
                 applications: 34839,
+                value: "tier3",
                 firstGeneration: 32,
                 femaleGender: 53,
                 maleGender: 42,
@@ -364,6 +415,7 @@
             {
                 state: "Maryland",
                 applications: 292602,
+                value: "tier2",
                 firstGeneration: 34,
                 femaleGender: 52,
                 maleGender: 44,
@@ -380,6 +432,7 @@
             {
                 state: "Massachusetts",
                 applications: 426605,
+                value: "tier2",
                 firstGeneration: 33,
                 femaleGender: 52,
                 maleGender: 45,
@@ -396,6 +449,7 @@
             {
                 state: "Michigan",
                 applications: 243735,
+                value: "tier2",
                 firstGeneration: 35,
                 femaleGender: 54,
                 maleGender: 43,
@@ -412,6 +466,7 @@
             {
                 state: "Minnesota",
                 applications: 111734,
+                value: "tier2",
                 firstGeneration: 28,
                 femaleGender: 54,
                 maleGender: 42,
@@ -428,6 +483,7 @@
             {
                 state: "Mississippi",
                 applications: 9602,
+                value: "tier4",
                 firstGeneration: 40,
                 femaleGender: 57,
                 maleGender: 40,
@@ -444,6 +500,7 @@
             {
                 state: "Missouri",
                 applications: 68483,
+                value: "tier3",
                 firstGeneration: 27,
                 femaleGender: 54,
                 maleGender: 42,
@@ -460,6 +517,7 @@
             {
                 state: "Montana",
                 applications: 5516,
+                value: "tier4",
                 firstGeneration: 19,
                 femaleGender: 57,
                 maleGender: 39,
@@ -476,6 +534,7 @@
             {
                 state: "Nebraska",
                 applications: 13090,
+                value: "tier3",
                 firstGeneration: 28,
                 femaleGender: 54,
                 maleGender: 43,
@@ -492,6 +551,7 @@
             {
                 state: "Nevada",
                 applications: 26551,
+                value: "tier3",
                 firstGeneration: 40,
                 femaleGender: 55,
                 maleGender: 41,
@@ -508,6 +568,7 @@
             {
                 state: "New Hampshire",
                 applications: 54751,
+                value: "tier3",
                 firstGeneration: 29,
                 femaleGender: 53,
                 maleGender: 43,
@@ -524,6 +585,7 @@
             {
                 state: "New Jersey",
                 applications: 596990,
+                value: "tier1",
                 firstGeneration: 37,
                 femaleGender: 52,
                 maleGender: 45,
@@ -540,6 +602,7 @@
             {
                 state: "New Mexico",
                 applications: 11727,
+                value: "tier3",
                 firstGeneration: 33,
                 femaleGender: 56,
                 maleGender: 40,
@@ -556,6 +619,7 @@
             {
                 state: "New York",
                 applications: 978218,
+                value: "tier1",
                 firstGeneration: 43,
                 femaleGender: 53,
                 maleGender: 44,
@@ -572,6 +636,7 @@
             {
                 state: "North Carolina",
                 applications: 288103,
+                value: "tier2",
                 firstGeneration: 33,
                 femaleGender: 55,
                 maleGender: 42,
@@ -588,6 +653,7 @@
             {
                 state: "North Dakota",
                 applications: 2310,
+                value: "tier4",
                 firstGeneration: 26,
                 femaleGender: 60,
                 maleGender: 36,
@@ -604,6 +670,7 @@
             {
                 state: "Ohio",
                 applications: 304984,
+                value: "tier2",
                 firstGeneration: 36,
                 femaleGender: 53,
                 maleGender: 44,
@@ -620,6 +687,7 @@
             {
                 state: "Oklahoma",
                 applications: 21209,
+                value: "tier3",
                 firstGeneration: 35,
                 femaleGender: 54,
                 maleGender: 43,
@@ -636,6 +704,7 @@
             {
                 state: "Oregon",
                 applications: 65382,
+                value: "tier3",
                 firstGeneration: 32,
                 femaleGender: 53,
                 maleGender: 41,
@@ -652,6 +721,7 @@
             {
                 state: "Pennsylvania",
                 applications: 413692,
+                value: "tier2",
                 firstGeneration: 36,
                 femaleGender: 54,
                 maleGender: 43,
@@ -668,6 +738,7 @@
             {
                 state: "Rhode Island",
                 applications: 47441,
+                value: "tier3",
                 firstGeneration: 46,
                 femaleGender: 55,
                 maleGender: 42,
@@ -684,6 +755,7 @@
             {
                 state: "South Carolina",
                 applications: 92429,
+                value: "tier3",
                 firstGeneration: 35,
                 femaleGender: 56,
                 maleGender: 42,
@@ -700,6 +772,7 @@
             {
                 state: "South Dakota",
                 applications: 3802,
+                value: "tier4",
                 firstGeneration: 28,
                 femaleGender: 61,
                 maleGender: 35,
@@ -716,6 +789,7 @@
             {
                 state: "Tennessee",
                 applications: 75975,
+                value: "tier3",
                 firstGeneration: 31,
                 femaleGender: 55,
                 maleGender: 42,
@@ -732,6 +806,7 @@
             {
                 state: "Texas",
                 applications: 515423,
+                value: "tier1",
                 firstGeneration: 34,
                 femaleGender: 54,
                 maleGender: 43,
@@ -748,6 +823,7 @@
             {
                 state: "U.S. Territories",
                 applications: 16889,
+                value: "tier3",
                 firstGeneration: 18,
                 femaleGender: 54,
                 maleGender: 43,
@@ -764,6 +840,7 @@
             {
                 state: "Utah",
                 applications: 23988,
+                value: "tier3",
                 firstGeneration: 32,
                 femaleGender: 51,
                 maleGender: 44,
@@ -780,6 +857,7 @@
             {
                 state: "Vermont",
                 applications: 21423,
+                value: "tier3",
                 firstGeneration: 28,
                 femaleGender: 52,
                 maleGender: 43,
@@ -796,6 +874,7 @@
             {
                 state: "Virginia",
                 applications: 327439,
+                value: "tier2",
                 firstGeneration: 31,
                 femaleGender: 53,
                 maleGender: 44,
@@ -812,6 +891,7 @@
             {
                 state: "Washington",
                 applications: 161439,
+                value: "tier2",
                 firstGeneration: 32,
                 femaleGender: 52,
                 maleGender: 43,
@@ -828,6 +908,7 @@
             {
                 state: "West Virginia",
                 applications: 7604,
+                value: "tier4",
                 firstGeneration: 32,
                 femaleGender: 54,
                 maleGender: 42,
@@ -844,6 +925,7 @@
             {
                 state: "Wisconsin",
                 applications: 84996,
+                value: "tier3",
                 firstGeneration: 31,
                 femaleGender: 56,
                 maleGender: 41,
@@ -860,6 +942,7 @@
             {
                 state: "Wyoming",
                 applications: 3065,
+                value: "tier4",
                 firstGeneration: 27,
                 femaleGender: 52,
                 maleGender: 43,
@@ -877,7 +960,7 @@
         function makeCards(state, applications, firstGeneration, femaleGender, maleGender, firstSchool, secondSchool, thirdSchool, whiteRace, latinxRace, asianRace, blackRace, otherRace){
             let cardContainer = document.getElementById('cardContainer');
             const card = document.createElement('div');
-            card.classList.add('stateCards');
+            card.classList.add('stateCard');
 
             card.innerHTML = 
             `<h2>${state}</h2>
@@ -902,6 +985,97 @@
         states.forEach(function(state){
             makeCards(state.state, state.applications, state.firstGeneration, state.femaleGender, state.maleGender, state.firstSchool, state.secondSchool, state.thirdSchool, state.whiteRace, state.latinxRace, state.asianRace, state.blackRace, state.otherRace);
         })
+
+        // Application dropdown element
+         const dropdown = document.getElementById('applicationDropdown');
+
+         const attributeValue = state.getAttribute(value);
+
+         //const tier1 = document.getElementById("tier1");
+
+         const allStates = document.querySelectorAll('.stateCard');
+
+
+         dropdown.addEventListener('change', function(){
+            
+             const filterValue = dropdown.value;
+
+             //let stateValue = filterValue;
+
+             allStates.forEach(function(stateCard) {
+
+                if(filterValue === "all" || filterValue === attributeValue){
+
+                    stateCard.style.display = 'block';
+                }
+                else {
+                    
+                    stateCard.style.display ='none';
+                }
+            })
+        })
+
+        //FIRST-GEN DROPDOWN ELEMENT
+        // const dropdownTwo = document.getElementById('first-gen-dropdown');
+
+        // dropdownTwo.addEventListener('change', function(){
+
+        //     const secondValue = dropdownTwo.id;
+
+        //     allStates.forEach(function(stateCard){
+
+        //         if(secondValue === "all" || secondValue === stateCard.getAttribute('id')){
+        //             stateCard.style.display = 'block';
+        //         }
+        //         else{
+        //             stateCard.style.display = 'none';
+        //         }
+        //     })
+        // })
+
+
+        
+
+
+        //const tier1 = document.getElementById("tier1");
+        // const tier2 = document.getElementById("tier2");
+        // const tier3 = document.getElementById("tier3");
+        // const tier4 = document.getElementById("tier4");
+
+        //trying to filter using buttons
+        // let allCards = document.querySelectorAll('#cardContainer > .stateCards');
+        // console.log(allCards);
+
+        // let allButtons = document.querySelectorAll('buttonContainer');
+
+        // allButtons.forEach(function(btn){
+            
+        //     btn.addEventListener('click', function(){
+                
+        //         allButtons.forEach(function(btn){
+        //             btn.classList.remove('clicked');
+        //         })
+
+        //         this.classList.add('clicked');
+
+        //         const filterValue = state.value;
+
+        //         allCards.forEach(card => {
+        //             if(value == "all" || card.value === value){
+        //                 card.style.display = 'block';
+        //             }
+        //             // else if(value == "tier1"){
+        //             //     state.style.display = 'block';
+        //             // }
+        //             else {
+        //                 card.style.display = 'none';
+        //             }
+        //         })
+        //     })
+        // })
+
+
+
 
     </script>
 
