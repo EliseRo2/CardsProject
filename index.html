@@ -18,39 +18,29 @@
 <body>
     <h1>2023-24 College Applications In Each State/Territory</h1>
 
+    <div id="application-dropdown">
+        <label>Number of Applications</label>
+        <select id="applicationDropdown">
+            <option value="all">All States/Territories</option>
+            <option value="tier1">More than 500,000 Applications</option>
+            <option value="tier2">100,001 to 500,000 Applications</option>
+            <option value="tier3">10,000 to 100,000 Applications</option>
+            <option value="tier4">Less than 10,000 Applications</option>
+        </select>
+    </div>
+
+    <div id="first-gen-dropdown">
+        <label>Percentage of First-Generation Applicants</label>
+        <select id="firstGenDropdown">
+            <option value="all">All States/Territories</option>
+            <option value="more-first-gen">35% or more First-Generation Applicants</option>
+            <option value="less-first-gen">Less than 35% of First-Generation Applicants</option>
+        </select>
+    </div>
+
     <div id="cardContainer">
 
     </div>
-
-    <!-- <div id="buttonContainer">
-
-        <button id="all" value="all">All States</button>
-
-        <button id="tier1" value="tier1">States with More than 500,000 Applications</button>
-
-        <button id="tier2" value="tier2">States with 100,001 to 500,000 Applications</button>
-
-        <button id="tier3" value="tier3">States with 10,000 to 100,000 Applications</button>
-
-        <button id="tier4" value="tier4">States with Less than 10,000 Applications</button>
-
-    </div> -->
-
-        <select id="applicationDropdown">
-            <h3>Number of Applications</h3>
-            <option value="all">All States</option>
-            <option value="tier1">States with More than 500,000 Applications</option>
-            <option value="tier2">States with 100,001 to 500,000 Applications</option>
-            <option value="tier3">States with 10,000 to 100,000 Applications</option>
-            <option value="tier4">States with Less than 10,000 Applications</option>
-        </select>
-
-        <!-- THIS IS THE SECOND DROPDOWN FOR FILTERING <select id="first-gen-dropdown">
-            <h3>Percentage of First-Generation Applicants</h3>
-            <option value="all">All States</option>
-            <option value="more-first-gen">States with More than 35% of First-Generation Applicants</option>
-            <option value="less-first-gen">States with Less than 35% of First-Generation Applicants</option>
-        </select> -->
 
     <script>
 
@@ -364,7 +354,7 @@
             {
                 state: "Kentucky",
                 applications: 40585,
-                value: "tier3",
+                value: "tier3", 
                 firstGeneration: 31,
                 femaleGender: 54,
                 maleGender: 43,
@@ -957,23 +947,35 @@
             }
         ];
 
-        function makeCards(state, applications, firstGeneration, femaleGender, maleGender, firstSchool, secondSchool, thirdSchool, whiteRace, latinxRace, asianRace, blackRace, otherRace){
+        function makeCards(state, applications, value, firstGeneration, femaleGender, maleGender, firstSchool, secondSchool, thirdSchool, whiteRace, latinxRace, asianRace, blackRace, otherRace){
             let cardContainer = document.getElementById('cardContainer');
             const card = document.createElement('div');
             card.classList.add('stateCard');
+            //Define the application attribute value
+            card.setAttribute('data-applicants', value);
+            //Define the generation attribute value
+            card.setAttribute('data-generation', value);
+            if(firstGeneration > 35){
+                card.setAttribute('data-generation', 'more-first-gen');
+
+            }
+            else{
+                card.setAttribute('data-generation', 'less-first-gen');
+            }
 
             card.innerHTML = 
             `<h2>${state}</h2>
             <p>Applications Submitted: <span style="color:blue">${applications.toLocaleString()}</span></p>
+
             <p>First-gen Applicants: <span style="color:green">${firstGeneration}%</span></p>
+
             <p>Gender: ${femaleGender}% Female | ${maleGender}% Male</p>
-            <h4>Top 3 Applicant Schools</h4>
-            <p class="schools">
-                <ol>
-                    <li> ${firstSchool}</li>
-                    <li> ${secondSchool}</li>
-                    <li> ${thirdSchool}</li>
-                </ol></p>
+
+            <h4 style="text-decoration:underline">Top 3 Applicant Schools</h4>
+            <p class ="schools">1. ${firstSchool}</p>
+            <p class ="schools">2. ${secondSchool}</p>
+            <p>3. ${thirdSchool}</p>
+
             <p class="race" style="text-decoration:underline">Race/Ethnicity Breakdown<p>
             <p style="font-weight:250">${whiteRace}% White | ${latinxRace}% Latinx | ${asianRace}% Asian | ${blackRace}% African American or Black | ${otherRace}% Other</p>`;
 
@@ -983,98 +985,57 @@
 
 
         states.forEach(function(state){
-            makeCards(state.state, state.applications, state.firstGeneration, state.femaleGender, state.maleGender, state.firstSchool, state.secondSchool, state.thirdSchool, state.whiteRace, state.latinxRace, state.asianRace, state.blackRace, state.otherRace);
+            makeCards(state.state, state.applications, state.value, state.firstGeneration, state.femaleGender, state.maleGender, state.firstSchool, state.secondSchool, state.thirdSchool, state.whiteRace, state.latinxRace, state.asianRace, state.blackRace, state.otherRace);
+            
         })
 
-        // Application dropdown element
-         const dropdown = document.getElementById('applicationDropdown');
+         // Application dropdown element
+         const first_dropdown = document.getElementById('applicationDropdown');
 
-         const attributeValue = state.getAttribute(value);
+         //First-generation dropdown element
+         const second_dropdown = document.getElementById('firstGenDropdown');
 
-         //const tier1 = document.getElementById("tier1");
+         //Get all the cards
+         let cards = document.querySelectorAll('.stateCard');
 
-         const allStates = document.querySelectorAll('.stateCard');
 
+         //Add an event listener to the dropdown
+         first_dropdown.addEventListener('change', function(){
 
-         dropdown.addEventListener('change', function(){
+            //second_dropdown.addEventListener('change', function(){
             
-             const filterValue = dropdown.value;
+                //Get the first filterValue 
+                const filterValue = first_dropdown.value;
 
-             //let stateValue = filterValue;
+                //Define second filterValue
+                const secondFilter = second_dropdown.value;
 
-             allStates.forEach(function(stateCard) {
+                //Loop through each card 
+                cards.forEach(function(stateCard) {
 
-                if(filterValue === "all" || filterValue === attributeValue){
+                    if(filterValue == stateCard.getAttribute('data-applicants') && secondFilter == "all"){
 
-                    stateCard.style.display = 'block';
-                }
-                else {
+                        stateCard.style.display = 'block';
+                    }
+                    else if (filterValue == "all" && secondFilter == stateCard.getAttribute('data-generation')){
+
+                        stateCard.style.display ='block';
+                    }
+                    else if(filterValue == stateCard.getAttribute('data-applicants') && secondFilter == stateCard.getAttribute('data-generation')){
+                        
+                        stateCard.style.display = 'block';
                     
-                    stateCard.style.display ='none';
-                }
-            })
+                    }
+                    else {
+                        
+                        stateCard.style.display ='none';
+                    }
+
+                    
+                })
+
+            //})
         })
-
-        //FIRST-GEN DROPDOWN ELEMENT
-        // const dropdownTwo = document.getElementById('first-gen-dropdown');
-
-        // dropdownTwo.addEventListener('change', function(){
-
-        //     const secondValue = dropdownTwo.id;
-
-        //     allStates.forEach(function(stateCard){
-
-        //         if(secondValue === "all" || secondValue === stateCard.getAttribute('id')){
-        //             stateCard.style.display = 'block';
-        //         }
-        //         else{
-        //             stateCard.style.display = 'none';
-        //         }
-        //     })
-        // })
-
-
-        
-
-
-        //const tier1 = document.getElementById("tier1");
-        // const tier2 = document.getElementById("tier2");
-        // const tier3 = document.getElementById("tier3");
-        // const tier4 = document.getElementById("tier4");
-
-        //trying to filter using buttons
-        // let allCards = document.querySelectorAll('#cardContainer > .stateCards');
-        // console.log(allCards);
-
-        // let allButtons = document.querySelectorAll('buttonContainer');
-
-        // allButtons.forEach(function(btn){
-            
-        //     btn.addEventListener('click', function(){
-                
-        //         allButtons.forEach(function(btn){
-        //             btn.classList.remove('clicked');
-        //         })
-
-        //         this.classList.add('clicked');
-
-        //         const filterValue = state.value;
-
-        //         allCards.forEach(card => {
-        //             if(value == "all" || card.value === value){
-        //                 card.style.display = 'block';
-        //             }
-        //             // else if(value == "tier1"){
-        //             //     state.style.display = 'block';
-        //             // }
-        //             else {
-        //                 card.style.display = 'none';
-        //             }
-        //         })
-        //     })
-        // })
-
-
 
 
     </script>
