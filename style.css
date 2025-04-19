@@ -3,9 +3,27 @@ body {
     background-color: #caf0f8;
 }
 
-#applicationDropdown {
-    margin-bottom: 15px;
+#dropdowns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    padding: 35px;
+    
 }
+
+#applicationDropdown {
+    font-size: 15px;
+    border: 2px solid #03045e;
+    border-radius: 15px;
+}
+
+#firstGenDropdown {
+    font-size: 15px;
+    border: 2px solid #03045e;
+    border-radius: 15px;
+}
+
 
 #cardContainer {
     max-width: 1600px;
